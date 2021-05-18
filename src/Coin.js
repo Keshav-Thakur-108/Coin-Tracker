@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Coin = ({image, name, symbol, price, volume, priceChange, marketcap}) => {
+const Coin = ({image, name, symbol, price, volume, priceChange, marketcap, openModal}) => {
     return (
-<div className="coin-container">
+<div onClick={() => openModal()} className="coin-container">
         <div className="coin-row">
             <div className="coin">
                 <img src={image} alt="crypto"/>
