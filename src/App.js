@@ -9,6 +9,7 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
   const [show, setShow] = useState(false)
+  const [coinName, setCoinName] = useState('')
 
   useEffect(() => {
     axios
@@ -26,9 +27,10 @@ function App() {
     setSearch(e.target.value);
   };
 
-  const openModal = () => {
+  const openModal = (id) => {
     console.log(show)
     setShow(!show)
+    setCoinName(id)
   }
 
   const filteredCoins = coins.filter(coin =>
@@ -54,6 +56,7 @@ function App() {
           <Coin
             openModal={openModal}
             key={coin.id}
+            id={coin.id}
             name={coin.name}
             price={coin.current_price}
             symbol={coin.symbol}
@@ -62,15 +65,10 @@ function App() {
             image={coin.image}
             priceChange={coin.price_change_percentage_24h}
           />
-          
           </>
-          
-
-          
-          
         );
       })}
-      {show ? <Modal clicked={openModal} show={show}>My name is asdf</Modal> : null}
+      {show ? <Modal coin={coinName} clicked={openModal} show={show}>My name is asdf</Modal> : null}
     </div>
     
   );
