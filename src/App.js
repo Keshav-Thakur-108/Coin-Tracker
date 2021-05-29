@@ -10,6 +10,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [show, setShow] = useState(false)
   const [coinName, setCoinName] = useState('')
+  
 
   useEffect(() => {
     axios
@@ -22,6 +23,8 @@ function App() {
       })
       .catch(error => console.log(error));
   }, []);
+
+
 
   const handleChange = e => {
     setSearch(e.target.value);

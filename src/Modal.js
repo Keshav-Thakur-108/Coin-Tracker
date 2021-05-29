@@ -40,6 +40,7 @@ export const Modal = (props) => {
        data.datasets[0].data = []
         axios.get(`https://api.coingecko.com/api/v3/coins/${props.coin}/market_chart?vs_currency=inr&days=7&interval=daily`)
         .then(res => {
+           // eslint-disable-next-line array-callback-return
            res.data.prices.map(price => {
                 
                 const date = moment(price[0]).format('MMMM Do');
@@ -51,7 +52,7 @@ export const Modal = (props) => {
                
         })
      
-    }, [])
+    }, [props.coin])
 
  
 
